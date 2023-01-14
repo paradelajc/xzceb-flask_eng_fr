@@ -1,5 +1,6 @@
 # pylint: disable=missing-module-docstring
 # pylint: disable=missing-function-docstring
+# pylint: disable=E0401
 
 import json
 import os
@@ -21,11 +22,17 @@ language_translator = LanguageTranslatorV3(
 language_translator.set_service_url(url)
 
 def english_to_french(english_text):
-    translation = language_translator.translate(english_text, model_id='en-fr').get_result()
-    json.dumps(translation, indent=2, ensure_ascii=False)
-    return translation['translations'][0]['translation']
+    if english_text:
+        translation = language_translator.translate(english_text, model_id='en-fr').get_result()
+        json.dumps(translation, indent=2, ensure_ascii=False)
+        french_text = translation['translations'][0]['translation']
+        return french_text
+    return None
 
 def french_to_english(french_text):
-    translation = language_translator.translate(french_text, model_id='fr-en').get_result()
-    json.dumps(translation, indent=2, ensure_ascii=False)
-    return translation['translations'][0]['translation']
+    if french_text:
+        translation = language_translator.translate(french_text, model_id='fr-en').get_result()
+        json.dumps(translation, indent=2, ensure_ascii=False)
+        english_text = translation['translations'][0]['translation']
+        return english_text
+    return None

@@ -1,7 +1,8 @@
 # pylint: disable=missing-module-docstring
 # pylint: disable=missing-class-docstring
 # pylint: disable=missing-function-docstring
-# pylint: disable = no-name-in-module
+# pylint: disable=no-name-in-module
+# pylint: disable=E0401
 
 import unittest
 
